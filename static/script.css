@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    margin-top: 20px;
+}
+
+.board {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #999;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cell.hidden {
+    background-color: #bbb;
+}
+
+.cell.revealed {
+    background-color: #e0e0e0;
+    cursor: default;
+}
+
+.cell.M {
+    background-color: #ffcccc;
+}
+
+.status {
+    font-size: 20px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.status.win {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status.lose {
+    background-color: #f8d7da;
+    color: #721c24;
+}
