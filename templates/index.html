@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <h1>Minesweeper</h1>
+
+    {% if game_over %}
+        <div class="status {{ 'win' if win else 'lose' }}">
+            {{ 'You Win! 🎉' if win else 'Game Over 💥' }}
+        </div>
+    {% endif %}
+
+    <div class="board">
+        {% for row in board %}
+            {% set row_idx = loop.index0 %}
+            <div class="row">
+                {% for cell in row %}
+                    {% set col_idx = loop.index0 %}
+                    {% if revealed[row_idx][col_idx] %}
+                        <div class="cell revealed {{ cell }}">
+                            {{ cell if cell != '' and cell != 'M' else ('💣' if cell == 'M' else '') }}
+                        </div>
+                    {% else %}
+                        <div class="cell hidden" onclick="revealCell({{ row_idx }}, {{ col_idx }})"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <button onclick="resetGame()">🔄 Reset</button>
+</body>
+</html>
